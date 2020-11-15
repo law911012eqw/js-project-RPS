@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link href="reset.css" rel="stylesheet" type="text/css" />
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <title>Rock Paper Scissors Project</title>
+</head>
+<body>
+        <div id="main-title">
+            
+            <h1>Rock, Paper, Scissors.</h1>
+        </div>
+        <div id="game-container">
+            <section id="score">
+                <p id="you">You: </p>
+                <p id="finalResult"></p>
+                <p id="com">:Com</p>
+            </section>
+            <section id="RPS-container">
+                <button class="rpsButton" onClick="game('rock')">Rock</button>
+                <button class="rpsButton" onClick="game('paper')">Paper</button>
+                <button class="rpsButton" onClick="game('scissors')">Scissors</button>
+            </section>
+            <blockquote id="roundResultOutput">The battle of pure luck between the two.</blockquote>
+            <section id="button-holder">
+                <button id="fiveRounds" class="roundsButton">5 rounds</button>
+                <button id="nineRounds" class="roundsButton">9 rounds</button>
+            </section>
+        </div> 
+        <p id="comRock">Com R|</p>
+        <p id="comPaper">Com P|</p>
+        <p id="comScissors">Com S|</p>
+    <script type="text/javascript" src="rpsBtnEventHdl.js"></script>
+</body>
+</html>
