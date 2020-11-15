@@ -15,24 +15,47 @@
         </div>
         <div id="game-container">
             <section id="score">
-                <p id="you">You: </p>
+                <p>You: <span id="you">0</span></p>
                 <p id="finalResult"></p>
-                <p id="com">:Com</p>
+                <p><span id="com">0</span> :Com</p>
             </section>
-            <section id="RPS-container">
-                <button class="rpsButton" onClick="game('rock')">Rock</button>
-                <button class="rpsButton" onClick="game('paper')">Paper</button>
-                <button class="rpsButton" onClick="game('scissors')">Scissors</button>
-            </section>
+            <div id="RPS-container">
+                <section>
+                    <article>
+                        <button id="btnRock" class="rpsButton" onClick="playRound('rock')"></button>
+                        <p>Rock</p>
+                    </article>
+                    <article>
+                        <button id="btnPaper" class="rpsButton" onClick="playRound('paper')"></button>
+                        <p>Paper</p>
+                    </article>
+                    <article>
+                        <button id="btnScissors" class="rpsButton" onClick="playRound('scissors')"></button>
+                        <p>Scissors</p>
+                    </article>
+                    
+                </section>
+            </div>
             <blockquote id="roundResultOutput">The battle of pure luck between the two.</blockquote>
             <section id="button-holder">
-                <button id="fiveRounds" class="roundsButton">5 rounds</button>
-                <button id="nineRounds" class="roundsButton">9 rounds</button>
+                <div id="minusR" class="round-wrapper"><img id="minus" src='/images/minus.png'></div>
+                <p class="numRounds">9</p>
+                <div id="plusR" class="round-wrapper"><img id="plus" src='/images/plus.png'></div>
             </section>
         </div> 
-        <p id="comRock">Com R|</p>
-        <p id="comPaper">Com P|</p>
-        <p id="comScissors">Com S|</p>
-    <script type="text/javascript" src="rpsBtnEventHdl.js"></script>
+        <div id="statistics">
+            <section>
+                <p class="com-stats" id="winStreakHighest">Highest Win Streak: </p>
+                <p class="com-stats" id="winStreakCurrent">Current Win Streak:</p>
+                <p class="com-stats" id="yourFav">Your favorite (RIP|S): </p>
+            </section>
+            <section>
+                <p class="com-stats" id="comRock">:Com R</p>
+                <p class="com-stats" id="comPaper">:Com P</p>
+                <p class="com-stats" id="comScissors">:Com S</p>
+            </section>
+        </div>
+
+    <script type="text/javascript" src="RPS.js"></script>
 </body>
 </html>
