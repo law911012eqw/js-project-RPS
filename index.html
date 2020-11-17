@@ -4,33 +4,33 @@
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
-    <link href="reset.css" rel="stylesheet" type="text/css" />
-    <link href="main.css" rel="stylesheet" type="text/css" />
+    <link href="reset.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="main.css" rel="stylesheet" type="text/css" media="all"/>
     <title>Rock Paper Scissors Project</title>
 </head>
+
 <body>
-        <div id="main-title">
-            
+        <div id="main-title">        
             <h1>Rock, Paper, Scissors.</h1>
         </div>
         <div id="game-container">
             <section id="score">
                 <p>You: <span id="you">0</span></p>
-                <p id="finalResult"></p>
+                <div><p id="finalResult" oninput="aniAfterGame()"></p></div>
                 <p><span id="com">0</span> :Com</p>
             </section>
             <div id="RPS-container">
-                <section>
-                    <article>
-                        <button id="btnRock" class="rpsButton" onClick="playRound('rock')"></button>
+                <section id="interactive_sect">
+                    <article onmouseover="enableHover()">
+                        <button id="btnRock"  onClick="playRound('rock')"></button>
                         <p>Rock</p>
                     </article>
-                    <article>
-                        <button id="btnPaper" class="rpsButton" onClick="playRound('paper')"></button>
+                    <article onmouseover="enableHover()">
+                        <button id="btnPaper" onClick="playRound('paper')"></button>
                         <p>Paper</p>
                     </article>
-                    <article>
-                        <button id="btnScissors" class="rpsButton" onClick="playRound('scissors')"></button>
+                    <article onmouseover="enableHover()">
+                        <button id="btnScissors" onClick="playRound('scissors')"></button>
                         <p>Scissors</p>
                     </article>
                     
@@ -45,9 +45,8 @@
         </div> 
         <div id="statistics">
             <section>
-                <p class="com-stats" id="winStreakHighest">Highest Win Streak: </p>
-                <p class="com-stats" id="winStreakCurrent">Current Win Streak:</p>
-                <p class="com-stats" id="yourFav">Your favorite (RIP|S): </p>
+                <p class="disabled">Current Win Streak: <span id="winStreakCurrent"></span></p>
+                <p class="com-stats">Your favorite (R/P/S): <span id="yourFav">None</span> </p>
             </section>
             <section>
                 <p class="com-stats" id="comRock">:Com R</p>
