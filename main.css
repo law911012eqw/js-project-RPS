@@ -21,12 +21,13 @@ img{
     cursor: pointer;
 }
 button{
+    width: 100px;
+    height: 100px;
+}
+.button{
     background: rgb(126, 124, 119);    
     color: #fff;
     border-radius: 7px;
-}
-button:hover{
-    cursor: pointer;
 }
 #main-title{
     border-bottom: 2.5px rgb(44, 34, 34);
@@ -78,20 +79,33 @@ blockquote{
     padding: 40px;
 }
 .rpsButton{
-    width: 100px;
-    height: 100px;
+    cursor: pointer;
+    color: rgb(245, 241, 25);
+    transform: scale(1.02);
 }
+/* .rpsButton button{
+
+} */
+/* .rpsButton:hover{   
+
+} */
 #btnRock{
     background-image: url(/images/cir.png);
     background-size: 100px 100px;
+    width: 100px;
+    height: 100px;
 }
 #btnPaper{
     background-image: url(/images/squ.png);
     background-size: 100px 100px;
+    width: 100px;
+    height: 100px;
 }
 #btnScissors{
     background-image: url(/images/tri.png);
     background-size: 100px 100px;
+    width: 100px;
+    height: 100px;
 }
 #button-holder{
     display: flex;
@@ -99,6 +113,12 @@ blockquote{
     justify-content: center;
     align-items: center;
 }
+
+/* js */
+.disabled{
+    opacity: 0.3;
+}
+/* js*/
 .round-wrapper{
     background: rgb(66, 61, 42);
     border-radius: 50%;
@@ -127,4 +147,19 @@ blockquote{
 }
 #statistics p {
 font-size: 75%;
+}
+
+/* animations */
+@keyframes aniEndGame{
+    30%{
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    50%{
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    70%{
+        opacity: 0.1;
+    }
 }
