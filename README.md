@@ -3,7 +3,7 @@ Description: A javascript project consisting of three buttons called Rock, paper
 
 ### Main sections
 1. The interactive section - This section is mainly for interaction. It is the emphasized or required blocks of code on this project. 
-2. Statistics section - This section is optional. It is sections for myself to practice function loops, mathematical formulas, and some other functions that may be needed for it to function on its proper state.
+2. Statistics section - This section is optional. It is a section solely for myself to practice function loops, mathematical formulas, and some other functions that may be needed for it to work on its proper state.
 
 ### Desired features to be fully synthesized as a simplified programmed webpage game
 1. Having to choose a different number of rounds such as 5 or 9 rounds in one game. (Done)
