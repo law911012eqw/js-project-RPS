@@ -108,19 +108,19 @@ blockquote{
     transform: scale(1.02);
 }
 #btnRock{
-    background-image: url('/images/cir.png');
+    background-image: url('images/cir.png');
     background-size: 100px 100px;
     width: 100px;
     height: 100px;
 }
 #btnPaper{
-    background-image: url('/images/squ.png');
+    background-image: url('images/squ.png');
     background-size: 100px 100px;
     width: 100px;
     height: 100px;
 }
 #btnScissors{
-    background-image: url('/images/tri.png');
+    background-image: url('images/tri.png');
     background-size: 100px 100px;
     width: 100px;
     height: 100px;
