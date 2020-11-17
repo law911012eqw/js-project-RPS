@@ -33,10 +33,7 @@ const minus = document.getElementById('minus');
 const plus = document.getElementById('plus');
 const minusR = document.getElementById('minusR');
 const plusR = document.getElementById('plusR');
-const rpsButtons = document.querySelector('rpsButton');
 
-/* animated methods */
-const animation = element.animate(keyframes)
 /* return elements used for statistical purposes */
 const yourFav = document.getElementById('yourFav');
 const winStreakCurrent = document.getElementById('winStreakCurrent');
@@ -89,10 +86,18 @@ function winHighest(userScore, comScore){
         return strScore;
     }
 }
-function enableHover(){
-    this.classList.add('rpsButton');
+/* mouse triggers toggle hover functions on buttons*/
+function enableHover(btnID){    
+    if(btnRock.disabled == true)
+    {
+
+    }else{document.getElementById(btnID).classList.add('rpsButton');}   
 }
-/* disables existing specified class in an element when called */
+function disableHover(btnID){    
+    document.getElementById(btnID).classList.remove('rpsButton');
+}
+
+/* disables existing specified class in an element when it is called */
 function disableButton(){
     btnRock.disabled = true;
     btnPaper.disabled = true;
@@ -100,23 +105,20 @@ function disableButton(){
     btnRock.classList.add('disabled');
     btnPaper.classList.add('disabled');
     btnScissors.classList.add('disabled');
-    disableCursor()
 }
-function disableCursor(){
-    rpsButtons.classList.remove('rpsButton');
-}
-/* creates new button element after game */
+
+/* creates new button element after game 
 function createPlayAgain(){
     const playAgain = document.createElement('div');
     playAgain.textContent = `Play again`;
     playAgain.classList.add('button');
 }
 function refreshPage(){
-    window.location.reload();
+    location.reload();
 }
 function aniAfterGame(){
-    paraFinal.addEventListener('animationstart')
-}
+    paraFinal.addEventListener('animationstart');
+} */
 /* statistical function that counts the number of each item that is chosen by the computer */
 function numCom(){
     comTimes++;
@@ -182,13 +184,11 @@ function victoryValidation(){
         winner = 1;
         winner==true ? paraFinal.textContent = "You Won!" : paraFinal.textContent = "You Lost!";
         disableButton()
-        disableCursor()
         //createPlayAgain();
     }else if(computerScore >= (numRounds/2)){
         winner = 0;
         winner==false ? paraFinal.textContent = "You Lose!" : paraFinal.textContent = "You Win!";
         disableButton()
-        disableCursor()
         //createPlayAgain();
     }
 }
@@ -220,8 +220,7 @@ function playRound(userChoice){
     }else if (roundResult.includes("defeated")){
         computerScore++;
     }
-    isStart() //It triggers when first time clicking -- to hide the button adjustment
-    //winStreakCurrent.textContent = winHighest(playerScore, computerScore);
+    isStart() //It triggers when first time clicking -- to hide the round adjustment
     yourFav.textContent = clickHighest(); //outputs the current favorite item chosen by user
     paraYou.textContent = `${playerScore}`; //outputs current user score 
     paraCom.textContent = `${computerScore}`; //outputs current computer score

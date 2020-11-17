@@ -1,7 +1,10 @@
+/* variables*/
 :root{
     --main-background: rgb(33, 35, 36);
     --main-color-score: rgb(255,215,0);
 }
+
+/*global elements */
 body{
     font-family: 'PT Sans', sans-serif;
     background: var(--main-background);
@@ -23,7 +26,12 @@ img{
 button{
     width: 100px;
     height: 100px;
+    cursor: pointer;
 }
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all;
+  }
 .button{
     background: rgb(126, 124, 119);    
     color: #fff;
@@ -37,13 +45,11 @@ button{
 #main-title h1{
     text-align: center;
     padding: 20px 0;
-    
 }
 #game-container{
     display: flex;
     flex-flow: column;
     width: 100%;
-    height: 60vh;
     box-shadow: inset 0 0 9px #fff;
 }
 #score{
@@ -58,37 +64,49 @@ button{
     display: flex;
     flex-flow: row;
     justify-content: center;
-    border: solid #fff;
     padding: 20px 0;
 }
 #RPS-container>section{
     width: 50%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
-#RPS-container article{
+#RPS-container div{
     font-size: 80%;
     text-align: center;
 }
 #RPS-container p{
     font-size: 75%;
 }
+@media screen and (min-width: 260px) and (max-width: 580px){
+    #RPS-container>section{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    body{
+        font-size: 1.5em;
+    }
+}
+@media screen and (min-width: 581px) and (max-width: 800px){
+    #RPS-container{
+        width: 75%;
+    } 
+    body{
+        font-size: 1.5em;
+    }
+
+}
 blockquote{
     text-align: center;
     padding: 40px;
 }
 .rpsButton{
-    cursor: pointer;
     color: rgb(245, 241, 25);
     transform: scale(1.02);
 }
-/* .rpsButton button{
-
-} */
-/* .rpsButton:hover{   
-
-} */
 #btnRock{
     background-image: url(/images/cir.png);
     background-size: 100px 100px;
@@ -149,7 +167,7 @@ blockquote{
 font-size: 75%;
 }
 
-/* animations */
+/* animations
 @keyframes aniEndGame{
     30%{
         transform: scale(1.2);
@@ -163,3 +181,4 @@ font-size: 75%;
         opacity: 0.1;
     }
 }
+ */
