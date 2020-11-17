@@ -21,18 +21,18 @@
             </section>
             <div id="RPS-container">
                 <section id="interactive_sect">
-                    <article onmouseover="enableHover()">
-                        <button id="btnRock"  onClick="playRound('rock')"></button>
+                    <div id="btnRockWrapper" onmouseleave="disableHover(this.id)" onmouseover="enableHover(this.id)">
+                        <button id="btnRock" onClick="playRound('rock')"></button>
                         <p>Rock</p>
-                    </article>
-                    <article onmouseover="enableHover()">
+                    </div>
+                    <div id="btnPaperWrapper" onmouseleave="disableHover(this.id)" onmouseover="enableHover(this.id)">
                         <button id="btnPaper" onClick="playRound('paper')"></button>
                         <p>Paper</p>
-                    </article>
-                    <article onmouseover="enableHover()">
+                    </div>
+                    <div id="btnScissorsWrapper" onmouseleave="disableHover(this.id)" onmouseover="enableHover(this.id)">
                         <button id="btnScissors" onClick="playRound('scissors')"></button>
                         <p>Scissors</p>
-                    </article>
+                    </div>
                     
                 </section>
             </div>
