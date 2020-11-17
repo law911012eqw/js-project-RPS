@@ -17,4 +17,4 @@ Create quote and outcome arrays
 Create random function
 
 #### My Main Goals
-My main goal for this project is too maintain an approximate ideal percentages (or more specifically around 40|40|20) among js, css and javascript as can be seen in the right side section of the repository main page where it indicates the percentage of languages used. Additionally, I wanted to achieve ideal aspects of this project to meet its functionality at least of its 80% according to my subjective calculation. 
+My main goal for this project is too maintain an approximate ideal percentages (or more specifically around 50|30|20) among js, css and javascript as can be seen in the right side section of the repository main page where it indicates the percentage of languages used. Additionally, I wanted to achieve ideal aspects of this project to meet its functionality at least of its 80% according to my subjective calculation. 
