@@ -16,27 +16,27 @@
         <div id="game-container">
             <section id="score">
                 <p>You: <span id="you">0</span></p>
-                <div><p id="finalResult" oninput="aniAfterGame()"></p></div>
+                <div><p id="finalResult"></p></div>
                 <p><span id="com">0</span> :Com</p>
             </section>
             <div id="RPS-container">
                 <section id="interactive_sect">
                     <div id="btnRockWrapper" onmouseleave="disableHover(this.id)" onmouseover="enableHover(this.id)">
-                        <button id="btnRock" onClick="playRound('rock')"></button>
+                        <button id="btnRock" class="btnRPS" onClick="playRound('rock')"></button>
                         <p>Rock</p>
                     </div>
                     <div id="btnPaperWrapper" onmouseleave="disableHover(this.id)" onmouseover="enableHover(this.id)">
-                        <button id="btnPaper" onClick="playRound('paper')"></button>
+                        <button id="btnPaper" class="btnRPS" onClick="playRound('paper')"></button>
                         <p>Paper</p>
                     </div>
                     <div id="btnScissorsWrapper" onmouseleave="disableHover(this.id)" onmouseover="enableHover(this.id)">
-                        <button id="btnScissors" onClick="playRound('scissors')"></button>
+                        <button id="btnScissors" class="btnRPS" onClick="playRound('scissors')"></button>
                         <p>Scissors</p>
                     </div>
                     
                 </section>
             </div>
-            <blockquote id="roundResultOutput">The battle of pure luck between the two.</blockquote>
+            <div id="endGameElement"><blockquote id="roundResultOutput">The battle of pure luck between the two.</blockquote></div>
             <section id="button-holder">
                 <div id="minusR" class="round-wrapper"><img id="minus" src='images/minus.png'></div>
                 <p class="numRounds">9</p>
@@ -45,8 +45,8 @@
         </div> 
         <div id="statistics">
             <section>
-                <p class="disabled">Current Win Streak: <span id="winStreakCurrent"></span></p>
-                <p class="com-stats">Your favorite (R/P/S): <span id="yourFav">None</span> </p>
+                <p class="usr-stats">Current Win Streak: <span id="winStreakCurrent">0</span></p>
+                <p class="usr-stats">Your favorite (R/P/S): <span id="yourFav">None</span> </p>
             </section>
             <section>
                 <p class="com-stats" id="comRock">:Com R</p>
