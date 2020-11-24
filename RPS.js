@@ -6,29 +6,27 @@ let roundResult; //round result as an input
 /* declared score variables*/
 let playerScore = 0;
 let computerScore = 0;
+let winningStreak = 0;
 
 /* declared number of times - computer choose item */
-let numComRock = 0;
-let numComPaper = 0;
-let numComScissors = 0;
 let comTimes = 0;
 let numUsrRock = 0;
 let numUsrPaper = 0;
 let numUsrScissors = 0;
 let numRounds = 9;
+let comStats = [{item : 'Rock', times: 0}, {item: 'Paper', times : 0}, {item: 'Scissors', times : 0}]
 
-/* translating html elements into a variable to access its programming aspect */
+/* translating html elements into a object to access its programming aspect */
 /* output */
 const paraYou = document.getElementById('you');
 const paraCom = document.getElementById('com');
 const paraFinal = document.getElementById('finalResult');
 const roundOutcome = document.querySelector('blockquote');
+const endGameElement = document.getElementById('endGameElement');
 const paraRounds = document.querySelector('.numRounds');
-
+const gameContainer = document.getElementById('game-container');
 /*custom buttons*/
-const btnRock = document.getElementById('btnRock');
-const btnPaper = document.getElementById('btnPaper');
-const btnScissors= document.getElementById('btnScissors');
+const btnRPS = document.querySelectorAll('.btnRPS');
 const minus = document.getElementById('minus');
 const plus = document.getElementById('plus');
 const minusR = document.getElementById('minusR');
@@ -37,9 +35,7 @@ const plusR = document.getElementById('plusR');
 /* return elements used for statistical purposes */
 const yourFav = document.getElementById('yourFav');
 const winStreakCurrent = document.getElementById('winStreakCurrent');
-
-/* Observing the balance consistency with an ideal average of 1/3 mark regarding the number of times the computer had chosen between the three
-just in case there's a math formula change needed if it is unbalanced */
+//const comPerc = document.querySelectorAll('.com-stats');
 const comRock = document.getElementById('comRock');
 const comPaper = document.getElementById('comPaper');
 const comScissors = document.getElementById('comScissors');
@@ -48,7 +44,7 @@ const comScissors = document.getElementById('comScissors');
 let chooseElement = ['rock', 'paper', 'scissors']
 
 /* return random item function*/
-let random = (number) => Math.floor(Math.random()* number)
+let random = (number) => Math.floor(Math.random()* number);
 
 /* percentage of each chosen items */
 let percTimes = (choose)=> ((choose/comTimes)*100);
@@ -70,76 +66,52 @@ function clickHighest(){
     else {return `None`;}
 }
 
-/* Includes a local variable that resets to zero when conditions are met */
-function winHighest(userScore, comScore){
-    let strScore, tempUserScore, tempComScore;
-    tempUserScore = userScore;
-    tempComScore = comScore;
-    strScore++;
-    if (strScore != (tempUserScore + tempComScore)){
-        strScore = 0;
-        tempUserScore = 0;
-        tempComScore = 0;
-        return strScore;
-    }
-    else {
-        return strScore;
-    }
-}
 /* mouse triggers toggle hover functions on buttons*/
 function enableHover(btnID){    
     if(btnRock.disabled == true)
     {
 
-    }else{document.getElementById(btnID).classList.add('rpsButton');}   
+    }else{document.getElementById(btnID).classList.add('btnHoverAni');}   
 }
 function disableHover(btnID){    
-    document.getElementById(btnID).classList.remove('rpsButton');
+    document.getElementById(btnID).classList.remove('btnHoverAni');
 }
 
 /* disables existing specified class in an element when it is called */
 function disableButton(){
-    btnRock.disabled = true;
-    btnPaper.disabled = true;
-    btnScissors.disabled = true;
-    btnRock.classList.add('disabled');
-    btnPaper.classList.add('disabled');
-    btnScissors.classList.add('disabled');
+    btnRPS.forEach(btn => btn.disabled = true);
 }
+/* creates a refresh button once the game is over */
+const playAgain = document.createElement('button');
+playAgain.textContent = `Play again`;
+playAgain.setAttribute('style', `background: rgb(58, 61, 63); color: inherit;`);
 
-/* creates new button element after game 
+/* creates new button element after game */
 function createPlayAgain(){
-    const playAgain = document.createElement('div');
-    playAgain.textContent = `Play again`;
-    playAgain.classList.add('button');
+    endGameElement.appendChild(playAgain);
+    endGameElement.removeChild(roundOutcome);
 }
-function refreshPage(){
+function refreshPage(){ //refreshes page
     location.reload();
 }
-function aniAfterGame(){
-    paraFinal.addEventListener('animationstart');
-} */
+playAgain.onclick = function(){
+    refreshPage();
+}
+
 /* statistical function that counts the number of each item that is chosen by the computer */
 function numCom(){
     comTimes++;
     if (computerChoice === "rock"){
-        numComRock++;
-        comRock.textContent = `${numComRock} (${Math.round(percTimes(numComRock))}%) :Com R`;
-        comPaper.textContent = `${numComPaper} (${Math.round(percTimes(numComPaper))}%) :Com P`;
-        comScissors.textContent = `${numComScissors} (${Math.round(percTimes(numComScissors))}%) :Com S`;
+        comStats[0].times++;
     }else if(computerChoice === "paper"){
-        numComPaper++;
-        comRock.textContent = `${numComRock} (${Math.round(percTimes(numComRock))}%) :Com R`;
-        comPaper.textContent = `${numComPaper} (${Math.round(percTimes(numComPaper))}%) :Com P`;
-        comScissors.textContent = `${numComScissors} (${Math.round(percTimes(numComScissors))}%) :Com S`;
+        comStats[1].times++;
     }else if(computerChoice === "scissors"){
-        numComScissors++;
-        comRock.textContent = `${numComRock} (${Math.round(percTimes(numComRock))}%) :Com R`;
-        comPaper.textContent = `${numComPaper} (${Math.round(percTimes(numComPaper))}%) :Com P`;
-        comScissors.textContent = `${numComScissors} (${Math.round(percTimes(numComScissors))}%) :Com S`;
+        comStats[2].times++;
     }
-} 
-
+    comRock.textContent = `${comStats[0].times} (${Math.round(percTimes(comStats[0].times))}%) :Com ${comStats[0].item.charAt(0)}`;
+    comPaper.textContent = `${comStats[1].times} (${Math.round(percTimes(comStats[1].times))}%) :Com ${comStats[1].item.charAt(0)}`;
+    comScissors.textContent = `${comStats[2].times} (${Math.round(percTimes(comStats[2].times))}%) :Com ${comStats[2].item.charAt(0)}`;
+}  
 /* Adjusts the number of rounds with a limit between 5 and 39 rounds */
 minus.onclick = function() {
     if(numRounds>=5 && numRounds<= 39){
@@ -179,17 +151,16 @@ function isStart(){
 }
 /* Determines the winner when the condition is met */
 function victoryValidation(){
-        let winner;
     if(playerScore >= (numRounds/2)){
-        winner = 1;
-        winner==true ? paraFinal.textContent = "You Won!" : paraFinal.textContent = "You Lost!";
-        disableButton()
-        //createPlayAgain();
+        paraFinal.textContent = "You Won!";
+        disableButton();
+        gameContainer.setAttribute('style', 'box-shadow: inset 0 0 17px #00FF00;')
+        createPlayAgain();
     }else if(computerScore >= (numRounds/2)){
-        winner = 0;
-        winner==false ? paraFinal.textContent = "You Lose!" : paraFinal.textContent = "You Win!";
-        disableButton()
-        //createPlayAgain();
+        paraFinal.textContent = "You Lose!";
+        disableButton();
+        gameContainer.setAttribute('style', 'box-shadow: inset 0 0 17px #FF0000;')
+        createPlayAgain();
     }
 }
 
@@ -217,12 +188,15 @@ function playRound(userChoice){
     numCom() //shows a statistical data regarding the written random gen formula for computer
     if (roundResult.includes("beat")){ //score +1 increment when the specific word is found 
         playerScore++;
+        winningStreak++; //winning streak counter
     }else if (roundResult.includes("defeated")){
         computerScore++;
+        winningStreak = 0;//a defeat resets to zero 
     }
     isStart() //It triggers when first time clicking -- to hide the round adjustment
     yourFav.textContent = clickHighest(); //outputs the current favorite item chosen by user
     paraYou.textContent = `${playerScore}`; //outputs current user score 
     paraCom.textContent = `${computerScore}`; //outputs current computer score
-    victoryValidation()
+    victoryValidation();
+    winStreakCurrent.textContent = winningStreak;
 }
